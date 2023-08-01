@@ -63,7 +63,20 @@ jobs:
 
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+    
+    - name: Build csharp code
+      if: matrix.language == 'csharp'
+      run: msbuild BlogEngine\BlogEngine.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+      # with:
+      #   vs-version: '[16.4,16.5)'
+      # name: Build app for release
+
+    - name: Build non-csharp code
+      if: matrix.language != 'csharp'
       uses: github/codeql-action/autobuild@v2
 
     # ℹ️ Command-line programs to run using the OS shell.
