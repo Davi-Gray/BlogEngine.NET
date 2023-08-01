@@ -20,6 +20,9 @@ on:
   schedule:
     - cron: '35 9 * * 6'
 
+env:
+  WEBAPP_SLN: BlogEngine.sln
+
 jobs:
   analyze:
     name: Analyze
@@ -28,7 +31,8 @@ jobs:
     #   - https://gh.io/supported-runners-and-hardware-resources
     #   - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    # runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'windows-latest' }}
     timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
     permissions:
       actions: read
@@ -65,19 +69,34 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     # - name: Autobuild
     #   uses: github/codeql-action/autobuild@v2
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '4.8.x'
+    
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.1
-    
-    - name: Build csharp code
-      if: matrix.language == 'csharp'
-      run: msbuild BlogEngine\BlogEngine.sln -t:rebuild -verbosity:diag -property:Configuration=Release
       # with:
       #   vs-version: '[16.4,16.5)'
-      # name: Build app for release
-
+    
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.1.1
+    
+#    - name: Restore NuGet Packages
+#      run: nuget restore ${{ env.WEBAPP_SLN }}
+    
     - name: Build non-csharp code
       if: matrix.language != 'csharp'
       uses: github/codeql-action/autobuild@v2
+      
+      # Need to add test step - or maybe not for the *analyze* action...
+
+    - name: Restore NuGet packages and build solution
+      if: matrix.language == 'csharp'
+      run: |
+        nuget restore ${{ env.WEBAPP_SLN }}
+        msbuild ${{ env.WEBAPP_SLN }} -t:rebuild -verbosity:diag -property:Configuration=Release
+      working-directory: ./BlogEngine
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
