@@ -63,7 +63,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("Name", value, ref this.name);
+                _ = base.SetValue("Name", value, ref this.name);
             }
         }
 
@@ -81,7 +81,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("FullPath", value, ref this.fullpath);
+                _ = base.SetValue("FullPath", value, ref this.fullpath);
             }
         }
 
@@ -99,7 +99,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("IsRoot", value, ref this.isroot);
+                _ = base.SetValue("IsRoot", value, ref this.isroot);
             }
         }
 
@@ -122,7 +122,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("Parent", value, ref this.parent);
+                _ = base.SetValue("Parent", value, ref this.parent);
             }
         }
 
@@ -142,7 +142,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("Directories", value, ref this.directories);
+                _ = base.SetValue("Directories", value, ref this.directories);
             }
         }
 
@@ -162,7 +162,7 @@ namespace BlogEngine.Core.FileSystem
             }
             internal set
             {
-                base.SetValue("Files", value, ref this.files);
+                _ = base.SetValue("Files", value, ref this.files);
             }
         }
 
@@ -200,7 +200,7 @@ namespace BlogEngine.Core.FileSystem
         /// <summary>
         /// Deletes the current directory, and all subsequent files
         /// </summary>
-        public void Delete()
+        public override void Delete()
         {
             BlogService.DeleteDirectory(this.FullPath);
             this.Dispose();

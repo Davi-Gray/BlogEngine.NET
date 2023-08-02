@@ -1,22 +1,18 @@
-﻿using BlogEngine.Core.Data.Models;
-using BlogEngine.Tests.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Hosting;
-using System.Web.Http.Routing;
+using BlogEngine.Core.Data.Models;
+using BlogEngine.Tests.Fakes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 namespace BlogEngine.Tests.WebApi
 {
     [TestClass]
     public class PageControllerTests
     {
+        private const string testBlogId = SharedTestData.testBlogId;
         private PagesController _ctrl;
 
         [TestInitialize]
@@ -24,14 +20,7 @@ namespace BlogEngine.Tests.WebApi
         {
             _ctrl = new PagesController(new FakePageRepository());
 
-            var config = new HttpConfiguration();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost/be/api");
-            var route = config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}");
-            var routeData = new HttpRouteData(route, new HttpRouteValueDictionary { { "controller", "pages" } });
-
-            _ctrl.ControllerContext = new HttpControllerContext(config, routeData, request);
-            _ctrl.Request = request;
-            _ctrl.Request.Properties[HttpPropertyKeys.HttpConfigurationKey] = config;
+            SharedTestData.InitializeController(_ctrl, "controller", "pages");
         }
 
         [TestMethod]
@@ -44,7 +33,7 @@ namespace BlogEngine.Tests.WebApi
         [TestMethod]
         public void PageControllerGetById()
         {
-            var item = _ctrl.Get("96d5b379-7e1d-4dac-a6ba-1e50db561b04");
+            var item = _ctrl.Get(testBlogId);
             Assert.IsNotNull(item);
         }
 
@@ -74,28 +63,23 @@ namespace BlogEngine.Tests.WebApi
         [TestMethod]
         public void PageControllerDelete()
         {
-            var result = _ctrl.Delete("96d5b379-7e1d-4dac-a6ba-1e50db561b04");
+            var result = _ctrl.Delete(testBlogId);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
 
         [TestMethod]
         public void PageControllerProcessChecked()
         {
-            var config = new HttpConfiguration();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://localhost/be/api");
-            var route = config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{id}");
-            var routeData = new HttpRouteData(route, new HttpRouteValueDictionary { { "id", "delete" } });
+            SharedTestData.InitializeController(_ctrl, "id", "delete");
 
-            _ctrl.ControllerContext = new HttpControllerContext(config, routeData, request);
-            _ctrl.Request = request;
-            _ctrl.Request.Properties[HttpPropertyKeys.HttpConfigurationKey] = config;
-
-            var items = new List<PageDetail>();
-            items.Add(new PageDetail()
+            var items = new List<PageDetail>
             {
-                IsChecked = true,
-                Id = Guid.NewGuid()
-            });
+                new PageDetail()
+                {
+                    IsChecked = true,
+                    Id = Guid.NewGuid()
+                }
+            };
 
             var result = _ctrl.ProcessChecked(items);
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
