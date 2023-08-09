@@ -50,12 +50,13 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\Debug\BlogEngine.Core.XML</DocumentationFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRules>-Microsoft.Design#CA1020</CodeAnalysisRules>
     <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>CS1591,CS1572</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
