@@ -30,9 +30,7 @@
         /// </summary>
         /// <value>The categories.</value>
         StateList<Category> Categories { get; }
-        /// <summary>
-        /// Tags assigned to (Publishable) object.
-        /// </summary>
+
         StateList<string> Tags { get; }
 
         /// <summary>

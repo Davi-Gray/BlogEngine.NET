@@ -370,14 +370,14 @@ namespace BlogEngine.Core.Packaging
             while (fols.Count > 0)
             {
                 fol = fols.Pop();
-                fol.Attributes &= ~(FileAttributes.Archive | FileAttributes.ReadOnly | FileAttributes.Hidden);
+                fol.Attributes = fol.Attributes & ~(FileAttributes.Archive | FileAttributes.ReadOnly | FileAttributes.Hidden);
                 foreach (DirectoryInfo d in fol.GetDirectories())
                 {
                     fols.Push(d);
                 }
                 foreach (FileInfo f in fol.GetFiles())
                 {
-                    f.Attributes &= ~(FileAttributes.Archive | FileAttributes.ReadOnly | FileAttributes.Hidden);
+                    f.Attributes = f.Attributes & ~(FileAttributes.Archive | FileAttributes.ReadOnly | FileAttributes.Hidden);
                     f.Delete();
                 }
             }
@@ -409,9 +409,10 @@ namespace BlogEngine.Core.Packaging
 
         static void ReplaceInFile(string filePath, string searchText, string replaceText)
         {
+            var cnt = 0;
             StreamReader reader = new StreamReader(filePath);
             string content = reader.ReadToEnd();
-            var cnt = content.Length;
+            cnt = content.Length;
             reader.Close();
 
             content = Regex.Replace(content, searchText, replaceText);

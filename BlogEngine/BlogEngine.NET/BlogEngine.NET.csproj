@@ -2141,12 +2141,14 @@
     </Compile>
     <Compile Include="archive.aspx.cs">
       <DependentUpon>archive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="archive.aspx.designer.cs">
       <DependentUpon>archive.aspx</DependentUpon>
     </Compile>
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="contact.aspx.designer.cs">
       <DependentUpon>contact.aspx</DependentUpon>
@@ -2158,36 +2160,42 @@
     <Compile Include="Custom\Widgets\Newsletter\Newsletter.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="error.aspx.designer.cs">
       <DependentUpon>error.aspx</DependentUpon>
     </Compile>
     <Compile Include="error404.aspx.cs">
       <DependentUpon>error404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="error404.aspx.designer.cs">
       <DependentUpon>error404.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrontPageExample.aspx.cs">
       <DependentUpon>FrontPageExample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrontPageExample.aspx.designer.cs">
       <DependentUpon>FrontPageExample.aspx</DependentUpon>
     </Compile>
     <Compile Include="page.aspx.cs">
       <DependentUpon>page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="page.aspx.designer.cs">
       <DependentUpon>page.aspx</DependentUpon>
     </Compile>
     <Compile Include="post.aspx.cs">
       <DependentUpon>post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="post.aspx.designer.cs">
       <DependentUpon>post.aspx</DependentUpon>
@@ -2195,6 +2203,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
@@ -2220,12 +2229,6 @@
     <Compile Include="Custom\Controls\PostList.ascx.designer.cs">
       <DependentUpon>PostList.ascx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlogEngine.Core\BlogEngine.Core.csproj">
-      <Project>{9ed9914a-fb6e-4d21-8c71-9122e8c3076b}</Project>
-      <Name>BlogEngine.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\labels.af.resx">
@@ -2423,6 +2426,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogEngine.Core\BlogEngine.Core.csproj">
+      <Project>{9ed9914a-fb6e-4d21-8c71-9122e8c3076b}</Project>
+      <Name>BlogEngine.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
