@@ -1,3 +1,5 @@
+# I recommend **not** using this project at the moment. This specific fork of it, at least (or its origin, either; it's not going to be easy to update to a more modern framework, either back-end or front-end, and it doesn't seem likely the original maintainers have plans in that direction). I'm working out some things here for my own personal edification. Feel free to look around, though, and see what's going on. :blush:
+
 <br>
 <p>
     <strong>BlogEngine</strong> is an open source blogging platform since 2007.<br>Easily customizable. Many free built-in Themes, Widgets, and Plugins.
