@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Original file name:
-// Generation date: 6/2/2023 3:20:56 PM
+// Generation date: 8/10/2023 2:47:49 PM
 namespace BlogEngine.Core.GalleryServer
 {
     
@@ -880,10 +880,6 @@ namespace BlogEngine.Core.GalleryServer
                 this.OnPropertyChanged("Screenshots");
             }
         }
-
-        /// <summary>
-        /// OnPropertyChanged event handler.
-        /// </summary>
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<PublishedScreenshot> _Screenshots = new global::System.Data.Services.Client.DataServiceCollection<PublishedScreenshot>(null, System.Data.Services.Client.TrackingMode.None);
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
