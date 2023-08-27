@@ -19,7 +19,7 @@ namespace Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option or rebuild the Visual Studio project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Web.Application.StronglyTypedResourceProxyBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class labels {
@@ -5983,6 +5983,15 @@ namespace Resources {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        internal static string share {
+            get {
+                return ResourceManager.GetString("share", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Short Biography.
         /// </summary>
