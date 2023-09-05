@@ -189,3 +189,5 @@ BlogEngine/BlogEngine.NET/App_Data/datastore/extensions/*.xml
 /.vs/slnx.sqlite
 /.vs/BlogEngine.NET/config/applicationhost.config
 .vs/VSWorkspaceState.json
+/.mailmap
+/BlogEngine/BlogEngine.NET/App_Data/logger.txt
